@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+
+        a{
+            text-decoration: none;
+            color:black;
+        }
+
+        .sub{
+            margin: 10px;
+            font-size: 20px;
+        }
+
+</style>
+<body>
+    {% load static %}
+    <h1><img src="{% static 'apple.jpg' %}" alt="" width="50" height="40"><a href="{%url 'home' %}">Blog Project</a></h1>
+    <hr>
+    <h5 style="margin-bottom: 10px;"><a href="{%url 'home' %}">Blog Project</a> > New Page</h5>
+    <form method = "POST" enctype="multipart/form-data">
+        {%csrf_token%}
+        <table>
+            {{form.as_table}}
+        </table>
+        <input class="btn btn-dark" type="submit" value="저장">
+        <hr>
+    </form>
+</body>
+</html>

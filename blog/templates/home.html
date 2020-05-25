@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        a{
+            text-decoration: none;
+            color:black;
+        }
+        #content:hover{
+            text-decoration:underline;
+        }
+    </style>
+</head>
+<body>
+    {% load static %}
+    <h1><img src="{% static 'apple.jpg' %}" alt="" width="50" height="40"><a href="{%url 'home' %}">Blog Project</a></h1>
+
+    {% for blog in blogs %}
+
+
+    <hr>
+    <a href="{%url 'detail' blog.id%}" id="content">
+    <h3>{{blog.title}}</h3>
+    <br>
+    {{blog.summary}}
+    <br>
+    <br>
+    {{blog.pup_date}}
+
+    </a>
+    <img>
+
+
+    {% endfor %}
+    <hr>
+    <button type="button"><a href="{%url 'new'%}">작성하기</a>
+</body>
+</html>

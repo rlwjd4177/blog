@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    body{
+        margin: 0;
+    }
+        a{
+            text-decoration: none;
+            color:black;
+        }
+
+        .sub{
+            margin: 10px;
+            font-size: 20px;
+        }
+
+</style>
+<body>
+    <h1><a href="{%url 'home' %}">Blog Project</a> > 수정하기</h1>
+    <hr>
+    <form action = "{%url 'update' blog.id%}" method = "POST">
+        {%csrf_token%}
+        <div class="sub">제목<br><input type="text" name = "title" size="30px" value="{{blog.title}}"></div>
+        <hr>
+        <div class="sub"><div>내용</div><textarea name="body" id="" cols="30" rows="10">{{blog.body}}</textarea>
+        <button type="submit">수정!</button></div>
+        <hr>
+    </form>
+
+</body>
+</html>

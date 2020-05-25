@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+        a{
+            text-decoration: none;
+            color:black;
+        }
+</style>
+<body>
+{% load static %}
+<h1><img src="{% static 'apple.jpg' %}" alt="" width="50" height="40"><a href="{%url 'home' %}">Blog Project</a></h1>
+<hr>
+<h5 style="margin-bottom: 10px;"><a href="{%url 'home' %}">Blog Project</a> > Detail Page</h5>
+
+<h3 style="margin-top: 10px;">제목 : {{blog.title}}</h3>
+
+<hr>
+
+<img src="{{blog.image.url}}" width="250" height="200">
+<p>{{blog.body}}</p>
+<p style="text-align: right;">{{blog.pup_date}}</p>
+
+<hr>
+
+</button><button type="button"><a href="{%url 'edit' blog.id%}">수정하기</a></button>
+</button><button type="button"><a href="{%url 'delete' blog.id%}">삭제하기</a></button>
+
+</body>
+</html>
+
