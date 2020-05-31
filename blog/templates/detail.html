@@ -20,14 +20,15 @@
 <h3 style="margin-top: 10px;">제목 : {{blog.title}}</h3>
 
 <hr>
-
-<img src="{{blog.image.url}}" width="250" height="200">
+{% if blog.image %}
+    <img src="{{blog.image.url}}" width="250" height="200">
+{% endif %}
 <p>{{blog.body}}</p>
 <p style="text-align: right;">{{blog.pup_date}}</p>
 
 <hr>
 
-</button><button type="button"><a href="{%url 'edit' blog.id%}">수정하기</a></button>
+;</button><button type="button"><a href="{%url 'edit' blog.id%}">수정하기</a></button>
 </button><button type="button"><a href="{%url 'delete' blog.id%}">삭제하기</a></button>
 
 </body>

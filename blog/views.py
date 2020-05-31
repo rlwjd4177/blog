@@ -1,12 +1,13 @@
 from django.shortcuts import render,get_object_or_404,redirect
 from .models import Blog
 from django.utils import timezone
-from .form import BlogForm
+from .forms import BlogForm
 # Create your views here.
 
 
 def home(request):
     blogs = Blog.objects.all()
+    
     return render(request,'home.html',{'blogs':blogs})
 
 def detail(request,blog_id):
@@ -22,7 +23,7 @@ def new(request):
             content.save()
             return redirect('home')
 
-    else :
+    else : 
         form = BlogForm()
         return render(request,'new.html',{'form':form})
 
@@ -38,7 +39,7 @@ def update(request,blog_id):
     update_blog.body = request.POST['body']
     update_blog.save()
     return redirect('detail', update_blog.id)
-    
+
 def delete(request,blog_id):
     delete_blog = get_object_or_404(Blog, pk = blog_id)
     delete_blog.delete()
