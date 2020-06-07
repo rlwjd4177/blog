@@ -2,13 +2,17 @@ from django.shortcuts import render,get_object_or_404,redirect
 from .models import Blog
 from django.utils import timezone
 from .forms import BlogForm
+from django.core.paginator import Paginator
 # Create your views here.
 
 
 def home(request):
-    blogs = Blog.objects.all()
+    b_list = Blog.objects.all()
+    paginator = Paginator(b_list,3)
+    page = request.GET.get('page')
+    posts = paginator.get_page(page)
     
-    return render(request,'home.html',{'blogs':blogs})
+    return render(request,'home.html',{'posts':posts})
 
 def detail(request,blog_id):
     blog = get_object_or_404(Blog, pk = blog_id)
@@ -44,3 +48,7 @@ def delete(request,blog_id):
     delete_blog = get_object_or_404(Blog, pk = blog_id)
     delete_blog.delete()
     return redirect('home')
+
+
+#{%url 'edit' question.id%}
+#
