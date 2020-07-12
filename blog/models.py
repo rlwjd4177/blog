@@ -1,4 +1,5 @@
 from django.db import models
+from account.models import *
 
 # Create your models here.
 
@@ -11,3 +12,11 @@ class Blog(models.Model):
 
     def summary(self):
         return self.body[:100]
+
+class Comment(models.Model):
+    user = models.ForeignKey(CustomUserModel,on_delete=models.CASCADE)
+    blog = models.ForeignKey(Blog, on_delete=models.CASCADE)
+    body = models.TextField()
+    pup_date = models.DateTimeField()
+
+    

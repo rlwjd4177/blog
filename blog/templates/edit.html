@@ -23,13 +23,10 @@
 <body>
     <h1><a href="{%url 'home' %}">Blog Project</a> > 수정하기</h1>
     <hr>
-    <form action = "{%url 'update' blog.id%}" method = "POST">
+    <form method = "POST">
         {%csrf_token%}
-        <div class="sub">제목<br><input type="text" name = "title" size="30px" value="{{blog.title}}"></div>
-        <hr>
-        <div class="sub"><div>내용</div><textarea name="body" id="" cols="30" rows="10">{{blog.body}}</textarea>
-        <button type="submit">수정!</button></div>
-        <hr>
+        {{form.as_p}}
+        <input type="submit" value="수정하기">
     </form>
 
 </body>

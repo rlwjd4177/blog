@@ -28,9 +28,16 @@
 
 <hr>
 
-;</button><button type="button"><a href="{%url 'edit' blog.id%}">수정하기</a></button>
+</button><button type="button"><a href="{%url 'edit' blog.id%}">수정하기</a></button>
 </button><button type="button"><a href="{%url 'delete' blog.id%}">삭제하기</a></button>
+</button><button type="button"><a href="{%url 'comment_new' blog.id%}">댓글달기</a></button>
 
+{% for comment in comments %}
+<hr>
+<br>작성자 : {{comment.user}}
+<br>내용 : {{comment.body}}
+<br>{{comment.pup_date}}
+{% endfor %}
 </body>
 </html>
 
